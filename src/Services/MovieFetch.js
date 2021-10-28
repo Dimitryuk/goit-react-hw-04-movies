@@ -15,3 +15,25 @@ export default async function fetchMovies(url, query) {
   const response = await axios(url, { params: { query } });
   return response.data;
 }
+
+export  async function fetchPopularMovies() {
+  const response = await fetchMovies('trending/all/day');
+  return response.results;
+}
+
+export async function fetchMoviesById(id) {
+  const response = await fetchMovies(`movie/${id}`);
+  return response;
+}
+export async function fetchCastById(id) {
+  const response = await fetchMovies(`movie/${id}/credits`);
+  return response.cast;
+}
+export async function fetchReviewById(id) {
+  const response = await fetchMovies(`movie/${id}/reviews`);
+  return response.results;
+}
+export async function fetchMoviesByQuery(query) {
+  const response = await fetchMovies(`search/movie`, query);
+  return response.results;
+}

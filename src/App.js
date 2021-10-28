@@ -13,18 +13,18 @@ const NotFound = lazy(() => import('./Pages/NotFound/NotFound'));
 
 function App() {
   // console.log(fetchMovies('https://api.themoviedb.org/3/', 'batman'));
-  fetch('https://api.themoviedb.org/3/movie/trending/movie/day')
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-    });
+  // fetch('https://api.themoviedb.org/3/movie/trending/movie/day')
+  //   .then(response => {
+  //     return response.json();
+  //   })
+  //   .then(data => {
+  //     console.log(data);
+  //   });
 
   return (
     <div className="App">
       <Navigation />
-      <Suspense fallback="waiting....">
+      <Suspense fallback={<h1>Загружаем</h1>}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/movies" component={SearchMovies} />
