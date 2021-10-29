@@ -3,9 +3,10 @@ import { Link, Route , Switch , useRouteMatch,
 import { fetchCastById, fetchMoviesById } from '../../Services/MovieFetch'
 import { useEffect, useState, lazy, Suspense } from 'react'
 import Loader from 'react-loader-spinner';
+import s from './MovieDetails.module.css'
 
 const Cast = lazy(() =>  import('../../Components/Cast/Cast' /*webpackChunkName: "Cast"*/) )
-const Reviews = lazy(()=>{import('../../Components/MovieReview/MovieReview' /*webpackChunkName: "Reviews"*/)})
+const Reviews = lazy(()=>import('../../Components/Reviews/Reviews' /*webpackChunkName: "Reviews"*/))
 export default function MovieDetails() {
   const { id } = useParams();
   const { url, path } = useRouteMatch();
@@ -13,8 +14,7 @@ export default function MovieDetails() {
   const { title, poster_path, overview } = film
     const history = useHistory();
   const { ref, search } = history.location.state
-  console.log(ref)
-    console.log(search);;
+ 
   useEffect(() => {
     const res = fetchMoviesById(id).then(r=>setFilm(r))
   },[id])
@@ -35,7 +35,7 @@ export default function MovieDetails() {
       <p>{overview} </p>
       <hr />
       <div >
-        <Link
+        <Link className={s.button}
           to={{
             pathname: `${url}/cast`,
             state: {
@@ -47,7 +47,7 @@ export default function MovieDetails() {
         >
           Cast
         </Link>
-        <Link
+        <Link className={s.button}
           to={{
             pathname: `${url}/reviews`,
             state: {

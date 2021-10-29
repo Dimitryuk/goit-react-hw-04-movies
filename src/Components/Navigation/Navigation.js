@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 export default function Navigation() {
   return (
     <div>
-      <ul>
+      <ul style={{listStyle:'none'}}>
         <li>
           <NavLink exact to="/">
             <h2>Home</h2>

@@ -1,10 +1,12 @@
 .App {
   text-align: center;
+  background-image: linear-gradient(120deg, #f6d365, #fda085);
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  list-style: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {

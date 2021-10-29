@@ -17,7 +17,7 @@ export default async function fetchMovies(url, query) {
 }
 
 export  async function fetchPopularMovies() {
-  const response = await fetchMovies('trending/all/day');
+  const response = await fetchMovies('trending/movie/day');
   return response.results;
 }
 
