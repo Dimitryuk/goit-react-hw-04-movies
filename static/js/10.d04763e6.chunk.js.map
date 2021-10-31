@@ -1,0 +1,1 @@
+{"version":3,"sources":["Pages/NotFound/NotFound.js"],"names":["NotFound","render"],"mappings":"2IAAA,4DAEe,SAASA,IACtBC","file":"static/js/10.d04763e6.chunk.js","sourcesContent":["import { render } from '@testing-library/react';\r\n\r\nexport default function NotFound() {\r\n  render();\r\n}\r\n"],"sourceRoot":""}

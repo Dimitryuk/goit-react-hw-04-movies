@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/Components/Reviews/Reviews.module.css"],"names":[],"mappings":"AAAA,4BACE,YAAa,CACb,eAAgB,CAChB,4BACF","file":"Reviews.ae1e4f7d.chunk.css","sourcesContent":[".nav_wrapper {\r\n  display: flex;\r\n  list-style: none;\r\n  justify-content: space-evenly;\r\n}\r\n"]}
