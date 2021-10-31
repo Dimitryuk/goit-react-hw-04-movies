@@ -27,7 +27,7 @@ function App() {
       <Suspense fallback={<h1>Загружаем</h1>}>
         <Switch>
           <Route exact path="/" component={Home} />
-          {/* <Route exact path="/movies" component={SearchMovies} /> */}
+          <Route exact path="/movies" component={SearchMovies} />
           <Route path="/movies/:id" component={MovieDetails} />
           {/* <Route component={NotFound} /> */}
           {/* <Route>

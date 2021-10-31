@@ -1,29 +1,41 @@
-import { Link, Route , Switch , useRouteMatch,
-  useHistory,useParams} from 'react-router-dom'
-import { fetchCastById, fetchMoviesById } from '../../Services/MovieFetch'
-import { useEffect, useState, lazy, Suspense } from 'react'
+import {
+  Link,
+  Route,
+  Switch,
+  useRouteMatch,
+  useHistory,
+  useParams,
+} from 'react-router-dom';
+import { fetchCastById, fetchMoviesById } from '../../Services/MovieFetch';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import Loader from 'react-loader-spinner';
-import s from './MovieDetails.module.css'
+import s from './MovieDetails.module.css';
 
-const Cast = lazy(() =>  import('../../Components/Cast/Cast' /*webpackChunkName: "Cast"*/) )
-const Reviews = lazy(()=>import('../../Components/Reviews/Reviews' /*webpackChunkName: "Reviews"*/))
+const Cast = lazy(() =>
+  import('../../Components/Cast/Cast' /*webpackChunkName: "Cast"*/),
+);
+const Reviews = lazy(() =>
+  import('../../Components/Reviews/Reviews' /*webpackChunkName: "Reviews"*/),
+);
 export default function MovieDetails() {
   const { id } = useParams();
   const { url, path } = useRouteMatch();
-  const [film, setFilm] = useState({})
-  const { title, poster_path, overview } = film
-    const history = useHistory();
-  const { ref, search } = history.location.state
- 
+  const [film, setFilm] = useState({});
+  const { title, poster_path, overview } = film;
+  const history = useHistory();
+  const { ref, search } = history.location.state;
+
   useEffect(() => {
-    const res = fetchMoviesById(id).then(r=>setFilm(r))
-  },[id])
+    const res = fetchMoviesById(id).then(r => setFilm(r));
+  }, [id]);
 
   return (
     <div>
- <p>
+      <p>
         <Link to={`${ref}${search}` ? `${ref}${search}` : '/'}>
-          <button type="button">Go back</button>
+          <button className={s.button} type="button">
+            Go back
+          </button>
         </Link>
       </p>
       <img
@@ -34,8 +46,9 @@ export default function MovieDetails() {
       <h3>{title}</h3>
       <p>{overview} </p>
       <hr />
-      <div >
-        <Link className={s.button}
+      <div>
+        <Link
+          className={s.button}
           to={{
             pathname: `${url}/cast`,
             state: {
@@ -43,11 +56,11 @@ export default function MovieDetails() {
               search: search,
             },
           }}
-          
         >
           Cast
         </Link>
-        <Link className={s.button}
+        <Link
+          className={s.button}
           to={{
             pathname: `${url}/reviews`,
             state: {
@@ -55,7 +68,6 @@ export default function MovieDetails() {
               search: search,
             },
           }}
-          
         >
           Review
         </Link>
@@ -78,5 +90,5 @@ export default function MovieDetails() {
         </Switch>
       </Suspense>
     </div>
-  )
+  );
 }

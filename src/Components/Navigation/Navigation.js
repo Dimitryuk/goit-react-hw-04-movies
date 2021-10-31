@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom';
+import s from './Navigation.module.css';
 export default function Navigation() {
   return (
     <div>
-      <ul style={{listStyle:'none'}}>
+      <ul className={s.nav_wrapper}>
         <li>
           <NavLink exact to="/">
             <h2>Home</h2>
