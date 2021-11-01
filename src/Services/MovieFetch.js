@@ -34,8 +34,6 @@ export async function fetchReviewById(id) {
   return response.results;
 }
 export async function fetchMoviesByQuery(query) {
-  // const response = await fetchMovies(`search/movie`, query);
-  // return response.results;
   return axios
     .get(
       `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`,

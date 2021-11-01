@@ -12,15 +12,6 @@ const MovieDetails = lazy(() => import('./Pages/MovieDetails/MovieDetails'));
 const NotFound = lazy(() => import('./Pages/NotFound/NotFound'));
 
 function App() {
-  // console.log(fetchMovies('https://api.themoviedb.org/3/', 'batman'));
-  // fetch('https://api.themoviedb.org/3/movie/trending/movie/day')
-  //   .then(response => {
-  //     return response.json();
-  //   })
-  //   .then(data => {
-  //     console.log(data);
-  //   });
-
   return (
     <div className="App">
       <Navigation />
@@ -29,19 +20,6 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/movies" component={SearchMovies} />
           <Route path="/movies/:id" component={MovieDetails} />
-          {/* <Route component={NotFound} /> */}
-          {/* <Route>
-            <Home />
-          </Route>
-          <Route>
-            <SearchMovies />
-          </Route>
-          <Route>
-            <MovieDetails />
-          </Route>
-          <Route>
-            <NotFound />
-          </Route> */}
         </Switch>
       </Suspense>
     </div>

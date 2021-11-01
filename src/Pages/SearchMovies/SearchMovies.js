@@ -1,66 +1,3 @@
-// import { render } from '@testing-library/react';
-// import MoviesList from '../../Components/MoviesList/MoviesList';
-// import { fetchMoviesByQuery } from '../../Services/MovieFetch';
-// import { useEffect, useState } from 'react';
-// import { useHistory, useLocation } from 'react-router-dom';
-
-// function SearchMovies() {
-//   const location = useLocation();
-//   const history = useHistory();
-//   console.log(location);
-//   console.log(location.search);
-
-//   const [searchQuery, setSearchQuery] = useState();
-//   const [searchMovies, setSearchMovies] = useState();
-
-//   const storedSearchQuery =
-//     new URLSearchParams(location.search).get('queryBy') ?? '';
-//   // console.log(storedSearchQuery);
-
-//   useEffect(() => {
-//     if (!storedSearchQuery) {
-//       return;
-//     }
-//     fetchMoviesByQuery(searchQuery)
-//       .then(setSearchMovies)
-//       .then(console.log(searchMovies))
-//       .catch(e => console.log('error'));
-//   }, [storedSearchQuery]);
-
-//   const handleSubmit = async e => {
-//     e.preventDefault();
-//     const searchQuery = e.target.value;
-
-//     history.push({
-//       ...location,
-//       search: `queryBy=${searchQuery}`,
-//     });
-//   };
-//   const handleChange = e => {
-//     setSearchQuery(e.target.value);
-//   };
-//   console.log(searchQuery);
-//   return (
-//     <>
-//       <form onSubmit={handleSubmit}>
-//         <label>
-//           <input
-//             onChange={handleChange}
-//             type="text"
-//             placeholder="Enter movie name..."
-//             value={searchQuery}
-//           ></input>
-//         </label>
-//         <button type="submit">Search</button>
-//       </form>
-
-//       <MoviesList films={searchMovies} history={history} query={searchQuery} />
-//     </>
-//   );
-// }
-
-// export default SearchMovies;
-
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import { fetchMoviesByQuery } from '../../Services/MovieFetch';
@@ -96,8 +33,6 @@ export default function MoviesPage() {
     });
   };
 
-  // console.log(query);
-  // console.log(urlQuery);
   useEffect(() => {
     if (storedQuery)
       fetchMoviesByQuery(storedQuery)
@@ -105,9 +40,6 @@ export default function MoviesPage() {
         .catch(e => console.log(e));
   }, []);
 
-  // useLocation(location.state.from: {`/movies/${movie.id}`})
-
-  // console.log(location);
   return (
     <div>
       <form className={s.form} onSubmit={handleSubmit}>
