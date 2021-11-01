@@ -6,7 +6,7 @@ import {
   useHistory,
   useParams,
 } from 'react-router-dom';
-import { fetchCastById, fetchMoviesById } from '../../Services/MovieFetch';
+import { fetchMoviesById } from '../../Services/MovieFetch';
 import { useEffect, useState, lazy, Suspense } from 'react';
 import Loader from 'react-loader-spinner';
 import s from './MovieDetails.module.css';
@@ -23,16 +23,20 @@ export default function MovieDetails() {
   const [film, setFilm] = useState({});
   const { title, poster_path, overview } = film;
   const history = useHistory();
-  const { ref, search } = history.location.state;
+  const { search } = history.location.state;
+  console.log(history.location);
 
   useEffect(() => {
     const res = fetchMoviesById(id).then(r => setFilm(r));
+    console.log(res);
   }, [id]);
 
   return (
     <div>
       <p>
-        <Link to={`${ref}${search}` ? `${ref}${search}` : '/'}>
+        <Link
+          to={history.location.state.from ? history.location.state.from : '/'}
+        >
           <button className={s.button} type="button">
             Go back
           </button>
@@ -52,7 +56,6 @@ export default function MovieDetails() {
           to={{
             pathname: `${url}/cast`,
             state: {
-              ref: ref,
               search: search,
             },
           }}
@@ -64,8 +67,8 @@ export default function MovieDetails() {
           to={{
             pathname: `${url}/reviews`,
             state: {
-              ref: ref,
-              search: search,
+              from:
+                `${history.location.pathname}` + `${history.location.search}`,
             },
           }}
         >

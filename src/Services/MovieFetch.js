@@ -16,7 +16,7 @@ export default async function fetchMovies(url, query) {
   return response.data;
 }
 
-export  async function fetchPopularMovies() {
+export async function fetchPopularMovies() {
   const response = await fetchMovies('trending/movie/day');
   return response.results;
 }
@@ -34,6 +34,11 @@ export async function fetchReviewById(id) {
   return response.results;
 }
 export async function fetchMoviesByQuery(query) {
-  const response = await fetchMovies(`search/movie`, query);
-  return response.results;
+  // const response = await fetchMovies(`search/movie`, query);
+  // return response.results;
+  return axios
+    .get(
+      `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`,
+    )
+    .then(r => r.data.results);
 }

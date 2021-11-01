@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import s from './MoviesList.module.css';
 import defaultImg from '../../images/300.jpg';
 
@@ -43,6 +43,7 @@ import defaultImg from '../../images/300.jpg';
 
 const MoviesList = ({ films, title }) => {
   const history = useHistory();
+  const location = useLocation();
   const [movies, setMovies] = useState();
 
   useEffect(() => {
