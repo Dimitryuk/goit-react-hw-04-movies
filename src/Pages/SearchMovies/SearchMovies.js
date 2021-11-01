@@ -18,7 +18,7 @@ export default function MoviesPage() {
   const handleSubmit = e => {
     e.preventDefault();
     if (query === '') {
-      return alert('not so fast :)');
+      return alert('Enter something...');
     }
     fetchMoviesByQuery(query)
       .then(setMovies)

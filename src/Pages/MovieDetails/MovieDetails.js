@@ -67,8 +67,7 @@ export default function MovieDetails() {
           to={{
             pathname: `${url}/reviews`,
             state: {
-              from:
-                `${history.location.pathname}` + `${history.location.search}`,
+              search: search,
             },
           }}
         >
