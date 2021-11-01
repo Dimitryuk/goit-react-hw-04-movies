@@ -7,7 +7,5 @@ export default function Home() {
   useEffect(() => {
     fetchPopularMovies().then(setFilms);
   }, []);
-  return (
-    <>{films && <MoviesList films={films} title="Popular movies are:" />}</>
-  );
+  return <>{films && <MoviesList films={films} title="Todays popular:" />}</>;
 }
