@@ -56,7 +56,7 @@ export default function MovieDetails() {
           to={{
             pathname: `${url}/cast`,
             state: {
-              search: search,
+              from: history.location.state.from,
             },
           }}
         >
@@ -67,7 +67,7 @@ export default function MovieDetails() {
           to={{
             pathname: `${url}/reviews`,
             state: {
-              search: search,
+              from: history.location.state.from,
             },
           }}
         >
